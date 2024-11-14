@@ -1,0 +1,35 @@
+# Installs the net-tools package, which includes network-related utilities (e.g., ifconfig, netstat, etc.)
+apt install net-tools
+
+# Installs the Zsh shell
+apt install zsh -y
+
+apt update 
+
+apt upgrade
+
+# Installs additional dependencies required for adding and managing external repositories
+apt install apt-transport-https ca-certificates curl software-properties-common -y
+
+# Downloads Docker's official GPG key and saves it to the system's keyring for package verification
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+# Adds Docker's stable repository to your system's list of APT repositories
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# Updates the package list again, now including the Docker repository
+apt update
+
+# Installs Docker Community Edition, Docker CLI, and Containerd (required for running Docker containers)
+apt install docker-ce docker-ce-cli containerd.io -y
+
+# Installs the 'unzip' package, which is useful for extracting compressed .zip files
+apt install unzip
+
+apt update
+
+# Installs the wget utility for downloading files from the internet
+apt install wget
+
+# Installs the vim text editor
+apt install vim -y
